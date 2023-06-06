@@ -4,6 +4,9 @@ import org.togglz.core.Feature;
 import org.togglz.core.annotation.Label;
 
 public enum Features implements Feature {
-    @Label("Feature Line Breaker")
-    FEATURE_LINE_BREAKER
+    @Label("line breaker")
+    FEATURE_LINE_BREAKER,
+
+    @Label("async notification")
+    FEATURE_ASYNC_NOTIFICATION
 }
