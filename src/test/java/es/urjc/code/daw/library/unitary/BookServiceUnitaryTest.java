@@ -4,6 +4,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import es.urjc.code.daw.library.book.LineBreaker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import es.urjc.code.daw.library.book.Book;
 import es.urjc.code.daw.library.book.BookRepository;
 import es.urjc.code.daw.library.book.BookService;
 import es.urjc.code.daw.library.notification.NotificationService;
+import org.togglz.core.manager.FeatureManager;
 
 @DisplayName("BookService Unitary tests")
 public class BookServiceUnitaryTest {
@@ -19,13 +21,17 @@ public class BookServiceUnitaryTest {
     private BookService bookService;
     private NotificationService notificationService;
     private BookRepository repository;
+    private LineBreaker lineBreaker;
+    private FeatureManager featureManager;
 
     @BeforeEach
 	public void setup() {
         
         repository = mock(BookRepository.class);
         notificationService = mock(NotificationService.class);
-        bookService = new BookService(repository, notificationService);
+        lineBreaker = mock(LineBreaker.class);
+        featureManager = mock(FeatureManager.class);
+        bookService = new BookService(repository, notificationService, lineBreaker, featureManager);
 			
     }
 
